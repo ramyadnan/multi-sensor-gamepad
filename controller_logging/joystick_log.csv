@@ -1,0 +1,12 @@
+Timestamp,JoystickID,EventType
+407,0,Please plug in a joystick.
+1074,2,Joystick #2 ('Nintendo Switch Pro Controller') added
+1120,2,Joystick #2 battery -> ON BATTERY - 100%
+2314,2,Joystick #2 button 3 -> PRESSED
+2612,2,Joystick #2 button 3 -> RELEASED
+3954,2,Joystick #2 button 2 -> PRESSED
+4241,2,Joystick #2 button 2 -> RELEASED
+5511,2,Joystick #2 button 1 -> PRESSED
+5797,2,Joystick #2 button 1 -> RELEASED
+7123,2,Joystick #2 button 0 -> PRESSED
+7403,2,Joystick #2 button 0 -> RELEASED
