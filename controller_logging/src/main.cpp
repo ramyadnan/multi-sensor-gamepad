@@ -33,7 +33,7 @@ void find_next_log_filename(char *filename, size_t size) {
 
         file = fopen(filename, "r");
         if (!file) {
-            return; // File doesn't exist, use this filename
+            return;
         } else {
             fclose(file);
         }
