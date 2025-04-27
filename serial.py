@@ -42,7 +42,7 @@ def get_next_filename():
             return filename
         index += 1
 
-# Function to handle key presses
+# function to handle key presses
 def on_press(key):
     global logging, file, writer, running
 
@@ -67,16 +67,15 @@ def on_press(key):
         
         elif key.char == 'q':  # Quit program
             print("Exiting program...")
-            running = False  # Stop the loop
+            running = False 
             if logging:
                 file.close()
             ser.close()  # close the serial connection
-            return False  # Stop listener
+            return False 
 
     except AttributeError:
-        pass  # Ignore special keys
+        pass
 
-# Run key listener in a separate thread
 listener = keyboard.Listener(on_press=on_press)
 listener.start()
 
@@ -86,16 +85,13 @@ try:
             data = ser.readline().decode('utf-8').strip()
 
             if logging:
-                # Get the current timestamp (date, time, and ms)
                 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S.") + str(int(time.time() * 1000) % 1000).zfill(3)
 
-                # Add the timestamp as the first element in the data to write into the CSV
                 row = [timestamp] + data.split(',')
-                print(row)  # You can print the row to debug and verify the timestamp
+                print(row)
 
-                # Write the row with timestamp to the CSV file
                 writer.writerow(row)
-                file.flush()  # Ensure data is saved
+                file.flush()
 
         time.sleep(0.1)
 
