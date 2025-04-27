@@ -2,22 +2,20 @@
 #include <Adafruit_Sensor.h>
 #include <Wire.h>
 
-// MPU6050 sensor
 Adafruit_MPU6050 mpu;
 
-// Flex sensor & GSR pins
 const int flexLeftPin = A1;
 const int flexRightPin = A2;
 const int gsrPin = A0;
 
 // Variables
 int valueL, valueR, gsrValue;
-const int sampleRate = 100; // Desired sampling interval in milliseconds
+const int sampleRate = 100;
 unsigned long lastSampleTime = 0;
 
 void setup() {
   Serial.begin(115200);
-  while (!Serial) delay(10); // Pause until serial console opens
+  while (!Serial) delay(10);
 
   // MPU6050 initialization
   Serial.println("Initializing MPU6050...");
@@ -35,7 +33,6 @@ void setup() {
 }
 
 void loop() {
-  // Ensure a consistent sampling rate
   unsigned long currentTime = millis();
   if (currentTime - lastSampleTime >= sampleRate) {
     lastSampleTime = currentTime;
@@ -44,7 +41,7 @@ void loop() {
     valueL = analogRead(flexLeftPin);
     valueR = analogRead(flexRightPin);
 
-    // Read GSR sensor with averaging (without delay)
+    // Read GSR sensor values
     long sum = 0;
     for (int i = 0; i < 10; i++) {
       sum += analogRead(gsrPin);
@@ -56,8 +53,6 @@ void loop() {
     mpu.getEvent(&a, &g, &temp);
 
     // Print all sensor data
-    // Serial.print(millis());
-    // Serial.print(",");
     Serial.print(valueL);
     Serial.print(",");
     Serial.print(valueR);
